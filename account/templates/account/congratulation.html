@@ -1,0 +1,90 @@
+ <!DOCTYPE html>
+<html>{% load staticfiles %}
+ 	<head>
+  	   <title>ORE</title>
+       <meta charset="utf-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1">
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+     </head>
+     <body>
+       <!-- Navbar  --><section>
+        <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+         <a class="navbar-brand" href="#">ORE</a>
+         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+          <ul class="navbar-nav ml-auto">
+           <li class="nav-item">
+            <a class="nav-link" href="{% url 'home'%}">{{user.username}}</a>
+          </li>
+          {% for ck in suser.all %}
+          {% if ck.userid == user.username %}
+          <!--PROFILE OPTION-->
+          <!--CUSTOMER PROFILE CODE-->
+          <li class="nav-item active"><a class="nav-link" href="JavaScript:{document.getElementById('profile').submit()}">PROFILE</a></li>
+          {% endif %}
+          {% endfor %}
+          {% for kc in rmach.all %}
+          {% if kc.rtlrid == user.username %}
+          <!--MACHANIC PROFILE CODE-->
+          <li class="nav-item active"><a class="nav-link" href="JavaScript:{document.getElementById('machprofile').submit()}">PROFILE</a></li>
+          {% endif %}
+          {% endfor %}
+          <li class="nav-item">
+            <a class="nav-link" href="JavaScript:{document.getElementById('logout').submit()}">LOGOUT</a>
+            <form id='logout'  method="post" action="{% url 'logout' %}">
+              {% csrf_token %}
+              <input type="hidden" />
+            </form>
+          </li>
+          <form id='machprofile' method="post" action="{% url 'machanicprofile' %}">
+            {% csrf_token %}
+            <input type="hidden"/>
+          </form>
+          <form id='profile'  method="post" action="{% url 'userprofile' %}">
+            {% csrf_token %}
+            <input type="hidden"/>
+          </form>
+        </ul>
+      </div>
+    </nav>
+  </section>
+  <!-- Navbar End -->
+  <!-- Main section -->
+{% if send == '' %}
+    <h1 class="text-center text-primary mt-5 mb-5">PLEASE FILL ALL DETAILS</h1>
+{% elif go == '1' %}
+    <h1 class="text-center text-primary mt-5 mb-5">{{ errorr }} please try again</h1>
+{% else %}
+    <h1 class="text-center text-primary mt-5 mb-5">CONGRATULATION YOUR PRODUCT IS UPLOADED</h1>
+{% endif %}
+
+<!-- Main section end -->
+<!-- Last section -->
+<footer class="container py-5">
+ <div class="row">
+  <div class="col-6 col-md">
+   <h5>About</h5>
+   <ul class="list-unstyled text-small">
+    <li>Team</li>
+       <p class="text-secondary">We are Four members in our team LAKSHAY KUMAR as a server side programmer, KARUN YADAV as
+           a designer of this web application, SHIVAM DISIT as a algorithm expert and ASHWANI KUMAR as a backend programmer.</p>
+    <li>Locations</li>
+       <p class="text-secondary">Galgotia's University, Greater Noida.</p>
+    <li>Privacy</li>
+        <p class="text-secondary">We understand this is a big responsibility and work hard to protect your information and put you in control.</p>
+    <li>Terms</li>
+       <p class="text-secondary">Thanks for using our service. The Services are provided by ONLINE REPAIRING ENVIRONMENT. You are agreeing to these terms. Please read them carefully.<a href="{% url 'tservice' %}"> Read more</a></p>
+  </ul>
+
+</div>
+</div>
+<p class="text-white text-center bg-dark">  © 2019-2020  Online Repairing Environment.</p>
+</footer>
+<!-- Last section end -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

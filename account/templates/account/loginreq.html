@@ -1,0 +1,79 @@
+﻿ <!DOCTYPE html>
+ <html>{% load staticfiles %}
+ <head>
+ 	<title>ORE</title>
+ 	<meta charset="utf-8">
+ 	<meta name="viewport" content="width=device-width, initial-scale=1">
+ 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+ </head>
+ <body>
+ <!-- Navbar  -->
+ <section>
+  <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+   <a class="navbar-brand" href="#">ORE</a>
+   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav ml-auto">
+     <li class="nav-item">
+      <a class="nav-link active" href="{% url 'login' %}">SIGN-IN</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'verify' %}">SIGN-UP</a>
+    </li>
+  </ul>
+</div>
+</nav>
+</section>
+<!-- Navbar End -->
+ 	<!-- sign up customer -->
+ 	<h2 class="text-center text-primary mt-5 ">SIGN IN</h2>
+ 	 <div class="bg-dark">
+ 		<div class="container w-50 mx-auto text-white">
+ 			<form method="post" action="{% url 'login' %}">
+                {% csrf_token %}
+                <h3 class="text-danger pt-5">{{ error }}</h3>
+ 				<div class="form-group pt-5">
+ 					<label>User Id:</label>
+ 					<input type="text" class="form-control" name="userid" autocomplete="off" required>
+ 				</div>
+ 				<div class="form-group">
+ 					<label>Password:</label>
+ 					<input type="password" class="form-control" name="passwordd" autocomplete="off"
+ 					 required>
+ 				</div>
+ 				<button type="submit" class="btn btn-primary mb-5">Sign In</button>
+ 			</form>
+ 		</div>
+ 	 </div>
+ 	</div>
+ 	<!-- sign up customer end -->
+<!-- Last section -->
+<footer class="container py-5">
+ <div class="row">
+  <div class="col-6 col-md">
+   <h5>About</h5>
+   <ul class="list-unstyled text-small">
+    <li>Team</li>
+       <p class="text-secondary">We are Four members in our team LAKSHAY KUMAR as a server side programmer, KARUN YADAV as
+           a designer of this web application, SHIVAM DISIT as a algorithm expert and ASHWANI KUMAR as a backend programmer.</p>
+    <li>Locations</li>
+       <p class="text-secondary">Galgotia's University, Greater Noida.</p>
+    <li>Privacy</li>
+        <p class="text-secondary">We understand this is a big responsibility and work hard to protect your information and put you in control.</p>
+    <li>Terms</li>
+       <p class="text-secondary">Thanks for using our service. The Services are provided by ONLINE REPAIRING ENVIRONMENT. You are agreeing to these terms. Please read them carefully.<a href="{% url 'tservice' %}"> Read more</a></p>
+  </ul>
+
+</div>
+</div>
+<p class="text-white text-center bg-dark">  © 2019-2020  Online Repairing Environment.</p>
+</footer>
+<!-- Last section end -->
+ 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+ 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+ 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+ </body>
+ </html>
